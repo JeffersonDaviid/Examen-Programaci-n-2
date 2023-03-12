@@ -4,7 +4,9 @@ import java.security.NoSuchAlgorithmException;
 
 import org.w3c.dom.UserDataHandler;
 
+import PkgBL.CoordenadasBL;
 import PkgBL.UsuarioBL;
+import PkgBL.Entities.Coordenadas;
 import PkgBL.Entities.Usuario;
 
 public class App {
@@ -18,6 +20,12 @@ public class App {
                 usuario.ccGetNombre() + "    " + usuario.ccGetUsuario() + "     " + usuario.ccGetContrasena()
 
                         + "\ncontra no encrip ");
+
+        CoordenadasBL csdf = new CoordenadasBL();
+        for (Coordenadas s : csdf.ccGetCoordenadaBL()) {
+            System.out.println(s.ccGetCap() + "    " + s.ccGetGeo() + "    " + s.ccGetTipoArsenal());
+        }
+
     }
 
     public static String ccEncriptarContrasena(String input) {

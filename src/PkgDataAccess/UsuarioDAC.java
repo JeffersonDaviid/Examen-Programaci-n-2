@@ -2,6 +2,8 @@ package PkgDataAccess;
 
 import java.sql.ResultSet;
 
+import PkgFramework.AppException;
+
 public class UsuarioDAC extends SQLiteDataHelper {
 
     public ResultSet ccGetUsuarioBL(String usuario, String contrasenia) throws Exception {
@@ -17,9 +19,9 @@ public class UsuarioDAC extends SQLiteDataHelper {
             return ccGetResultSet(ccSql);
 
         } catch (Exception e) {
-            System.out.println("Fallo en ccGetUsuarioBL() " + e.getMessage());
+            throw new AppException(e, getClass(),
+                    "Error en ccGetUsuarioBL(String usuario, String contrasenia) " + e.getMessage());
         }
-        return null;
 
     }
 
