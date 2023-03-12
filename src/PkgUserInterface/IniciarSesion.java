@@ -23,6 +23,7 @@ public class IniciarSesion extends JFrame {
     private JPasswordField ccpasswordField;
     private JTextField cctextField;
     private JButton ccbtnNewButton;
+    private int ccnumintentos = 3;
 
     public static void main(String[] args) {
         IniciarSesion frame = new IniciarSesion();
@@ -31,6 +32,7 @@ public class IniciarSesion extends JFrame {
 
     public IniciarSesion() {
         setBounds(new Rectangle(500, 200, 400, 400));
+
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
@@ -59,28 +61,24 @@ public class IniciarSesion extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-
+                    ccnumintentos--;
                     UsuarioBL ccUserBL = new UsuarioBL();
-                    Usuario ccUsuario = ccUserBL.ccGetUsuarioBL(cctextField.getText().trim(),
-                            ccEncriptarContrasena(new String(ccpasswordField.getPassword()).toLowerCase()));
+                    Usuario ccUsuario = ccUserBL.ccGetUsuarioBL(cctextField.getText().trim().toLowerCase(),
+                            ccEncriptarContrasena(new String(ccpasswordField.getPassword())));
 
-                    if (ccUsuario != null) {
-                    int ccnumintentos = 3;
-                    while (ccnumintentos > 0) {
-                        if (ccUsuario.ccGetUsuario().equalsIgnoreCase(cctextField.getText().trim())) {
-                            Ventana ventana = new Ventana();
-                            ventana.setVisible(true);
-                            // this.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "El usuario " +
-                                    cctextField.getText().trim()
-                                    + " no se encuentra en la base de datos.\nRevise sus datos e intente nuevamente");
-                        }
+                    if (ccUsuario != null && ccUsuario.ccGetUsuario().equalsIgnoreCase(cctextField.getText().trim())) {
+                        Ventana ventana = new Ventana();
+                        ventana.setVisible(true);
+                        setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El usuario " +
+                                cctextField.getText().trim()
+                                + " no se encuentra en la base de datos.\nRevise sus datos e intente nuevamente");
                     }
                     if (ccnumintentos == 0) {
                         JOptionPane.showMessageDialog(null, "Intentos fallidos");
+                        setVisible(false);
                         System.exit(0);
-                    }
                     }
 
                 } catch (Exception e1) {

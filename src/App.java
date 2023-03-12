@@ -13,7 +13,7 @@ public class App {
         System.out.println(ccEncriptarContrasena("1234") + "      81dc9bdb52d04dc20036dbd8313ed055");
 
         UsuarioBL u = new UsuarioBL();
-        Usuario usuario = u.ccGetUsuarioBL("Prof", ccEncriptarContrasena("1234"));
+        Usuario usuario = u.ccGetUsuarioBL(("Profe").toLowerCase(), ccEncriptarContrasena("1234"));
         System.out.println(
                 usuario.ccGetNombre() + "    " + usuario.ccGetUsuario() + "     " + usuario.ccGetContrasena()
 

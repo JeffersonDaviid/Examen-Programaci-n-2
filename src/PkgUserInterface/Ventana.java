@@ -3,5 +3,8 @@ package PkgUserInterface;
 import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
-    // mostrar resultado
+    public Ventana() {
+        setSize(300, 400);
+    }
+
 }
