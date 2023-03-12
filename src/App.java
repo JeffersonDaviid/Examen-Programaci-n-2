@@ -2,8 +2,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.w3c.dom.UserDataHandler;
-
 import PkgBL.CoordenadasBL;
 import PkgBL.UsuarioBL;
 import PkgBL.Entities.Coordenadas;

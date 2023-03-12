@@ -60,9 +60,9 @@ public class IniciarSesion extends JFrame {
                 try {
                     UsuarioBL user = new UsuarioBL();
                     Usuario u = user.ccGetUsuarioBL(cctextField.getText().trim(),
-                            new String(ccpasswordField.getPassword()));
+                            ccEncriptarContrasena(new String(ccpasswordField.getPassword())));
                     if (u != null) {
-                        if (u.ccGetUsuario() == "Prof") {
+                        if (u.ccGetUsuario().equalsIgnoreCase("Prof")) {
                             Ventana ventana = new Ventana();
                             ventana.setVisible(true);
                             // this.setVisible(false);
