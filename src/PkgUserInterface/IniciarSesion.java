@@ -24,6 +24,7 @@ public class IniciarSesion extends JFrame {
     private JTextField cctextField;
     private JButton ccbtnNewButton;
     private int ccnumintentos = 3;
+    Usuario ccUsuario;
 
     public static void main(String[] args) {
         IniciarSesion frame = new IniciarSesion();
@@ -65,7 +66,7 @@ public class IniciarSesion extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 try {
                     UsuarioBL ccUserBL = new UsuarioBL();
-                    Usuario ccUsuario = ccUserBL.ccGetUsuarioBL(cctextField.getText().trim().toLowerCase(),
+                    ccUsuario = ccUserBL.ccGetUsuarioBL(cctextField.getText().trim().toLowerCase(),
                             ccEncriptarContrasena(new String(ccpasswordField.getPassword())));
 
                     if (ccUsuario != null && ccUsuario.ccGetUsuario().equalsIgnoreCase(cctextField.getText().trim())) {
@@ -76,13 +77,14 @@ public class IniciarSesion extends JFrame {
                 } catch (Exception e1) {
                 } finally {
                     ccnumintentos--;
-                    if (ccnumintentos == 0) {
+                    if (ccnumintentos == 0 && ccUsuario == null) {
                         JOptionPane.showMessageDialog(null, "Intentos fallidos");
                         setVisible(false);
                         System.exit(0);
+                    } else if (ccUsuario == null) {
+                        JOptionPane.showMessageDialog(null,
+                                "Revise sus datos e intente nuevamente\nIntento permitidos: " + ccnumintentos);
                     }
-                    JOptionPane.showMessageDialog(null,
-                            "Revise sus datos e intente nuevamente\nIntento permitidos: " + ccnumintentos);
 
                 }
             }

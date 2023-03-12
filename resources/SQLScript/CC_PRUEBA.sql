@@ -102,7 +102,23 @@ CREATE TABLE
     CREDENCIALES (
         USUARIO VARCHAR(25) UNIQUE,
         CONTRASENIA VARCHAR(25),
-        NOMBRE VARCHAR(25) UNIQUE
+        NOMBRE VARCHAR(100) UNIQUE
+    );
+
+INSERT INTO
+    CREDENCIALES (USUARIO, CONTRASENIA, NOMBRE)
+VALUES (
+        'profe',
+        '81dc9bdb52d04dc20036dbd8313ed055',
+        'Profesor'
+    );
+
+INSERT INTO
+    CREDENCIALES (USUARIO, CONTRASENIA, NOMBRE)
+VALUES (
+        'jefferson.chileno@epn.edu.ec',
+        '65cbd53cd5ce4f0c1f0ed2b201ebfdad',
+        'JEFFERSON DAVID CHILENO MANOBANDA'
     );
 
 INSERT INTO
