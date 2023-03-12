@@ -10,6 +10,13 @@ import PkgFramework.AppException;
 public class CoordenadasBL {
     ArrayList<Coordenadas> ccLsCoordenadas = new ArrayList<>();
 
+    /**
+     * Metodo que consta a la base de datos y nos entrega una lista sin repeticiones
+     * de CAP
+     * 
+     * @return
+     * @throws Exception
+     */
     public ArrayList<Coordenadas> ccGetCoordenadaBL() throws Exception {
         try {
             CoordenadasDAC ccCoordenadaDac = new CoordenadasDAC();
@@ -32,6 +39,14 @@ public class CoordenadasBL {
         }
 
     }
+
+    /**
+     * Metodo que se encarga de validar si existe un elemento repetido
+     * 
+     * @param ccLsCoordenadas
+     * @param ccCoordenada
+     * @return
+     */
 
     public boolean ccValidarRepetido(ArrayList<Coordenadas> ccLsCoordenadas, Coordenadas ccCoordenada) {
 

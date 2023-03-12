@@ -1,11 +1,6 @@
 package PkgBL;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
-
-import javax.swing.plaf.synth.SynthStyleFactory;
 
 import PkgBL.Entities.Usuario;
 import PkgDataAccess.UsuarioDAC;
@@ -13,6 +8,15 @@ import PkgFramework.AppException;
 
 public class UsuarioBL {
 
+    /**
+     * Metodo que consula en la base de datos, un usuriario atravez de usuario y
+     * contraseña
+     * 
+     * @param usuario
+     * @param contrasenia
+     * @return
+     * @throws Exception
+     */
     public Usuario ccGetUsuarioBL(String usuario, String contrasenia) throws Exception {
         try {
             UsuarioDAC ccUsuarioDac = new UsuarioDAC();

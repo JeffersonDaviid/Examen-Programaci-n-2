@@ -102,23 +102,27 @@ CREATE TABLE
     CREDENCIALES (
         USUARIO VARCHAR(25) UNIQUE,
         CONTRASENIA VARCHAR(25),
-        NOMBRE VARCHAR(100) UNIQUE
+        NOMBRE VARCHAR(100) UNIQUE,
+        FECHA DATE
     );
 
 INSERT INTO
-    CREDENCIALES (USUARIO, CONTRASENIA, NOMBRE)
+    CREDENCIALES (
+        USUARIO,
+        CONTRASENIA,
+        NOMBRE,
+        FECHA
+    )
 VALUES (
         'profe',
         '81dc9bdb52d04dc20036dbd8313ed055',
-        'Profesor'
-    );
-
-INSERT INTO
-    CREDENCIALES (USUARIO, CONTRASENIA, NOMBRE)
-VALUES (
+        'Profesor',
+        '2023-03-12'
+    ), (
         'jefferson.chileno@epn.edu.ec',
         '65cbd53cd5ce4f0c1f0ed2b201ebfdad',
-        'JEFFERSON DAVID CHILENO MANOBANDA'
+        'JEFFERSON DAVID CHILENO MANOBANDA',
+        '2023-03-12'
     );
 
 INSERT INTO
@@ -126,7 +130,8 @@ INSERT INTO
 VALUES (
         'profe',
         '81dc9bdb52d04dc20036dbd8313ed055',
-        'Profesor'
+        'Profesor',
+        '2023-03-12'
     );
 
 SELECT * FROM CREDENCIALES;

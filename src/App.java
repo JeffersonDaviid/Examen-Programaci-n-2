@@ -26,10 +26,6 @@ public class App {
 
     }
 
-    public void ccPresentarResumen(Usuario user) {
-
-    }
-
     public static String ccEncriptarContrasena(String input) {
         String md5 = null;
         if (null == input)
