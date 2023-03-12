@@ -55,14 +55,17 @@ public class IniciarSesion extends JFrame {
 
         ccbtnNewButton = new JButton("Ingresar");
         ccbtnNewButton.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    UsuarioBL user = new UsuarioBL();
-                    Usuario u = user.ccGetUsuarioBL(cctextField.getText().trim(),
-                            ccEncriptarContrasena(new String(ccpasswordField.getPassword())));
-                    if (u != null) {
-                        if (u.ccGetUsuario().equalsIgnoreCase("Prof")) {
+
+                    UsuarioBL ccUserBL = new UsuarioBL();
+                    Usuario ccUsuario = ccUserBL.ccGetUsuarioBL(cctextField.getText().trim(),
+                            ccEncriptarContrasena(new String(ccpasswordField.getPassword()).toLowerCase()));
+
+                    if (ccUsuario != null) {
+                        if (ccUsuario.ccGetUsuario().equalsIgnoreCase(cctextField.getText().trim())) {
                             Ventana ventana = new Ventana();
                             ventana.setVisible(true);
                             // this.setVisible(false);
