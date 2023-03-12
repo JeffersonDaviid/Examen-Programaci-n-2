@@ -65,6 +65,8 @@ public class IniciarSesion extends JFrame {
                             ccEncriptarContrasena(new String(ccpasswordField.getPassword()).toLowerCase()));
 
                     if (ccUsuario != null) {
+                    int ccnumintentos = 3;
+                    while (ccnumintentos > 0) {
                         if (ccUsuario.ccGetUsuario().equalsIgnoreCase(cctextField.getText().trim())) {
                             Ventana ventana = new Ventana();
                             ventana.setVisible(true);
@@ -74,6 +76,11 @@ public class IniciarSesion extends JFrame {
                                     cctextField.getText().trim()
                                     + " no se encuentra en la base de datos.\nRevise sus datos e intente nuevamente");
                         }
+                    }
+                    if (ccnumintentos == 0) {
+                        JOptionPane.showMessageDialog(null, "Intentos fallidos");
+                        System.exit(0);
+                    }
                     }
 
                 } catch (Exception e1) {
