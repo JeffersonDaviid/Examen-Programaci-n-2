@@ -31,28 +31,31 @@ public class IniciarSesion extends JFrame {
     }
 
     public IniciarSesion() {
-        setBounds(new Rectangle(500, 200, 400, 400));
+        setTitle("INICIAR SESION");
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(new Rectangle(500, 200, 260, 300));
 
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
         ccpasswordField = new JPasswordField();
-        ccpasswordField.setBounds(123, 146, 126, 20);
+        ccpasswordField.setBounds(63, 128, 126, 20);
         panel.add(ccpasswordField);
         ccpasswordField.setColumns(15);
 
         cctextField = new JTextField();
-        cctextField.setBounds(123, 79, 126, 20);
+        cctextField.setBounds(63, 61, 126, 20);
         panel.add(cctextField);
         cctextField.setColumns(15);
 
         JLabel lblNewLabel = new JLabel("Usuario");
-        lblNewLabel.setBounds(165, 54, 56, 14);
+        lblNewLabel.setBounds(105, 36, 56, 14);
         panel.add(lblNewLabel);
 
         JLabel lblNewLabel_1 = new JLabel("Contraseña");
-        lblNewLabel_1.setBounds(152, 121, 69, 14);
+        lblNewLabel_1.setBounds(92, 103, 69, 14);
         panel.add(lblNewLabel_1);
 
         ccbtnNewButton = new JButton("Ingresar");
@@ -61,7 +64,6 @@ public class IniciarSesion extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    ccnumintentos--;
                     UsuarioBL ccUserBL = new UsuarioBL();
                     Usuario ccUsuario = ccUserBL.ccGetUsuarioBL(cctextField.getText().trim().toLowerCase(),
                             ccEncriptarContrasena(new String(ccpasswordField.getPassword())));
@@ -70,22 +72,22 @@ public class IniciarSesion extends JFrame {
                         Ventana ventana = new Ventana();
                         ventana.setVisible(true);
                         setVisible(false);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "El usuario " +
-                                cctextField.getText().trim()
-                                + " no se encuentra en la base de datos.\nRevise sus datos e intente nuevamente");
                     }
+                } catch (Exception e1) {
+                } finally {
+                    ccnumintentos--;
                     if (ccnumintentos == 0) {
                         JOptionPane.showMessageDialog(null, "Intentos fallidos");
                         setVisible(false);
                         System.exit(0);
                     }
+                    JOptionPane.showMessageDialog(null,
+                            "Revise sus datos e intente nuevamente\nIntento permitidos: " + ccnumintentos);
 
-                } catch (Exception e1) {
                 }
             }
         });
-        ccbtnNewButton.setBounds(145, 210, 89, 23);
+        ccbtnNewButton.setBounds(85, 192, 89, 23);
         panel.add(ccbtnNewButton);
 
     }
