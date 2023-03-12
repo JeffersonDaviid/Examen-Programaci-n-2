@@ -108,7 +108,7 @@ CREATE TABLE
 INSERT INTO
     CREDENCIALES (USUARIO, CONTRASENIA, NOMBRE)
 VALUES (
-        'Profe',
+        'profe',
         '81dc9bdb52d04dc20036dbd8313ed055',
         'Profesor'
     );
