@@ -10,7 +10,7 @@ import PkgBL.Entities.Usuario;
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
-        System.out.println(ccEncriptarContrasena("1752760551") + "!" + "      81dc9bdb52d04dc20036dbd8313ed055");
+        System.out.println(ccEncriptarContrasena("1752760551") + "      81dc9bdb52d04dc20036dbd8313ed055");
 
         UsuarioBL u = new UsuarioBL();
         Usuario usuario = u.ccGetUsuarioBL(("Profe").toLowerCase(), ccEncriptarContrasena("1234"));

@@ -18,12 +18,11 @@ public class Ventana extends JFrame {
     public static void main(String[] args) throws Exception {
         Ventana frame = new Ventana();
         frame.setVisible(true);
-        ccPresentarResumen();
     }
 
-    public Ventana() {
+    public Ventana() throws Exception {
         // setResizable(false);
-        setSize(500, 800);
+        setSize(800, 800);
         getContentPane().setLayout(new BorderLayout(0, 0));
 
         JPanel panel = new JPanel();
@@ -44,6 +43,7 @@ public class Ventana extends JFrame {
         cctxtrF_1.setFocusable(false);
         cctxtrF_1.setEditable(false);
         panel_1.add(cctxtrF_1);
+        ccPresentarResumen();
 
     }
 
@@ -85,15 +85,16 @@ public class Ventana extends JFrame {
                         ccDataResumen += ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
                                 + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  BOMB-IPI  " + "  }\n";
 
-                        System.out.print(ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
-                                + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  BOMB-IPI  " + "  }\n");
+                        System.out.println(ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
+                                + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  BOMB-IPI" + "  }");
+                    } else {
+
+                        ccDataResumen += ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
+                                + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  }\n";
+
+                        System.out.println(ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
+                                + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  }");
                     }
-
-                    ccDataResumen += ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
-                            + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  }\n";
-
-                    System.out.print(ccLsCoordenadaBl.get(i).ccGetGeo() + " {  "
-                            + ccLsCoordenadaBl.get(i).ccGetTipoArsenal() + "  }\n");
                 } else {
                     ccDataResumen += "\t";
 
@@ -113,7 +114,8 @@ public class Ventana extends JFrame {
      * @return
      */
     public static boolean ccValidarCoordernada(String ccCoodernada) {
-        String ccBomba = "^a+bc*(d+|t*)$";
+        // String ccBomba = "^(a+bc*(d*|t*))$";
+        String ccBomba = "a+bc*$";
         return ccCoodernada.matches(ccBomba);
 
     }
